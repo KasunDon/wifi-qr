@@ -6,3 +6,6 @@ node_modules/
 terraform/build/
 terraform/build.zip
 .env
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/

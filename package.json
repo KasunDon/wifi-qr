@@ -5,12 +5,19 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:run"
   },
   "license": "MIT",
   "dependencies": {
     "express": "^4.19.2",
     "qrcode": "^1.5.4",
     "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "cypress": "^15.18.0",
+    "start-server-and-test": "^3.0.11"
   }
 }

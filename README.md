@@ -37,6 +37,31 @@ npm start
 
 Then open http://localhost:3000
 
+## End-to-end tests (Cypress)
+
+Regression coverage lives in `cypress/e2e/` and runs against a live local server:
+
+```bash
+npm install
+npm run test:e2e   # starts the server, runs Cypress headlessly, then exits
+```
+
+Or, with the server already running (`npm start`) in another terminal:
+
+```bash
+npm run cypress:run    # headless
+npm run cypress:open   # interactive runner
+```
+
+Suites:
+
+- `home.cy.js` — page loads, form fields render, navigation to/from legal pages.
+- `generate.cy.js` — happy-path QR generation for WPA, open, and hidden networks; password show/hide; download link.
+- `validation.cy.js` — regression coverage for required-field validation, missing password on secured networks, the consent gate (client + server), and the malicious-content filter (links/script-like SSID or password rejected, both via the UI and direct API calls).
+- `legal.cy.js` — Terms & Conditions and Privacy Policy render with the expected liability/acceptable-use/no-storage language.
+
+These run automatically on every push via GitHub Actions (`.github/workflows/e2e.yml`).
+
 ## Deploy to AWS Lambda (free tier) with Terraform
 
 The app deploys as a single Lambda function exposed via a **Lambda Function URL** (no API Gateway), which keeps it fully inside AWS's always-free tier:
