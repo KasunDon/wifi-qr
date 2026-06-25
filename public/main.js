@@ -30,11 +30,20 @@ form.addEventListener('submit', async (event) => {
   generateBtn.disabled = true;
   generateBtn.textContent = 'Generating...';
 
+  if (!document.getElementById('consent').checked) {
+    errorEl.textContent = 'Please confirm you are authorized to share this network before generating a QR code.';
+    errorEl.classList.remove('hidden');
+    generateBtn.disabled = false;
+    generateBtn.textContent = 'Generate QR Code';
+    return;
+  }
+
   const payload = {
     ssid: document.getElementById('ssid').value,
     password: passwordInput.value,
     security: securitySelect.value,
     hidden: document.getElementById('hidden').checked,
+    consent: document.getElementById('consent').checked,
   };
 
   try {
