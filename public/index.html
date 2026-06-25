@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WiFi QR Code Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <span class="eyebrow">📶 Instant Connect</span>
+    <h1>WiFi QR Code Generator</h1>
+    <p class="subtitle">Scan with an iPhone or Android camera to join the network automatically. Nothing is stored — your network details stay in your browser.</p>
+
+    <form id="wifi-form">
+      <label for="ssid">Network name (SSID)</label>
+      <input type="text" id="ssid" name="ssid" maxlength="32" required autocomplete="off" />
+
+      <label for="security">Security</label>
+      <select id="security" name="security">
+        <option value="WPA" selected>WPA/WPA2/WPA3</option>
+        <option value="WEP">WEP</option>
+        <option value="nopass">None (open network)</option>
+      </select>
+
+      <label for="password" id="password-label">Password</label>
+      <input type="password" id="password" name="password" maxlength="63" autocomplete="off" />
+      <button type="button" id="toggle-password" class="link-btn">Show password</button>
+
+      <label class="checkbox">
+        <input type="checkbox" id="hidden" name="hidden" />
+        Hidden network
+      </label>
+
+      <button type="submit" id="generate-btn">Generate QR Code</button>
+    </form>
+
+    <div id="result" class="result hidden">
+      <img id="qr-image" alt="WiFi QR code" />
+      <p class="hint">Open your camera app and point it at the code.</p>
+      <a id="download-link" download="wifi-qr.png">Download PNG</a>
+    </div>
+
+    <p id="error" class="error hidden"></p>
+  </main>
+
+  <footer>
+    <a href="/terms.html">Terms &amp; Conditions</a> ·
+    <a href="/privacy.html">Privacy Policy</a>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

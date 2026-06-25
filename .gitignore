@@ -1,0 +1,8 @@
+node_modules/
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+terraform/build/
+terraform/build.zip
+.env
